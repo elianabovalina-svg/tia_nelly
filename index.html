@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gastos de Tía Nelly</title>
+  <meta name="theme-color" content="#1f6f5c">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <div>
+        <h1>Gastos de Tía Nelly</h1>
+        <p class="sub">Registro compartido del cuidado</p>
+      </div>
+      <div class="total" aria-live="polite">
+        <span class="total-label">Total gastado</span>
+        <strong id="total">—</strong>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card" aria-labelledby="t-nuevo">
+      <h2 id="t-nuevo">Registrar un gasto</h2>
+      <form id="form-gasto" novalidate>
+        <div class="grid">
+          <label class="field">
+            <span>Fecha</span>
+            <input type="date" id="g-fecha" required>
+          </label>
+          <label class="field">
+            <span>Monto total ($)</span>
+            <input type="number" id="g-monto" inputmode="decimal" step="0.01" min="0.01" placeholder="0,00" required>
+          </label>
+          <label class="field">
+            <span>Quién lo realizó</span>
+            <select id="g-quien" required></select>
+          </label>
+          <label class="field full">
+            <span>Descripción</span>
+            <input type="text" id="g-desc" maxlength="200" placeholder="Ej.: Farmacia, enfermera, supermercado…" required>
+          </label>
+        </div>
+        <p id="form-msg" class="form-msg" role="alert"></p>
+        <button type="submit" id="btn-guardar" class="btn primary">Guardar gasto</button>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="t-buscar">
+      <h2 id="t-buscar">Buscar</h2>
+      <div class="grid">
+        <label class="field full">
+          <span>Descripción</span>
+          <input type="search" id="f-texto" placeholder="Palabra a buscar…">
+        </label>
+        <label class="field">
+          <span>Desde</span>
+          <input type="date" id="f-desde">
+        </label>
+        <label class="field">
+          <span>Hasta</span>
+          <input type="date" id="f-hasta">
+        </label>
+        <label class="field">
+          <span>Quién</span>
+          <select id="f-quien"></select>
+        </label>
+        <div class="field actions">
+          <button type="button" id="btn-limpiar" class="btn">Limpiar filtros</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="t-lista">
+      <div class="list-head">
+        <h2 id="t-lista">Gastos</h2>
+        <button type="button" id="btn-actualizar" class="btn small">Actualizar</button>
+      </div>
+      <p id="resumen" class="resumen"></p>
+      <p id="estado" class="estado" role="status"></p>
+      <ul id="lista" class="lista"></ul>
+      <button type="button" id="btn-expandir" class="btn block" hidden></button>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
